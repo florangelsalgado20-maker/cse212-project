@@ -29,7 +29,6 @@ public class TakingTurnsQueue
             }
             else if (person.Turns <= 0)
             {
-                // CORRECCIÓN: Las personas con 0 o menos turnos tienen turnos infinitos y deben volver a la cola.
                 _people.Enqueue(person);
             }
 
