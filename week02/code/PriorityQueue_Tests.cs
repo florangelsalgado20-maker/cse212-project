@@ -2,11 +2,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 [TestClass]
-public class PriorityQueueTests
+public class PriorityQueue_Tests
 {
     [TestMethod]
     // Scenario: Add items with different priorities and dequeue them.
     // Expected Result: Items should be dequeued in descending order of priority (highest first).
+    // Test Result: PASS - Items dequeued in correct priority order: High (10), Medium (5), Low (1).
     // Defect(s) Found: 
     // 1. Loop condition was `index < _queue.Count - 1`, missing the last element. Fixed to `index < _queue.Count`.
     // 2. Condition was `>=` which broke FIFO for same priorities. Fixed to `>`.
@@ -26,6 +27,7 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Add multiple items with the SAME priority.
     // Expected Result: Items should be dequeued in FIFO order (the first one added is removed first).
+    // Test Result: PASS - Items dequeued in FIFO order: First, Second, Third.
     // Defect(s) Found: See TestPriorityQueue_HighestPriorityFirst (Fixed `>=` to `>` to preserve FIFO order).
     public void TestPriorityQueue_SamePriorityFIFO()
     {
@@ -42,6 +44,7 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Attempt to dequeue from an empty queue.
     // Expected Result: An InvalidOperationException with the message "The queue is empty." should be thrown.
+    // Test Result: PASS - Exception thrown with correct message.
     // Defect(s) Found: None. The original code already handled this requirement correctly.
     public void TestPriorityQueue_EmptyQueueThrowsException()
     {
