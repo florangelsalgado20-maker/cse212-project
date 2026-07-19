@@ -19,10 +19,8 @@ public class PriorityQueue
         }
 
         var highPriorityIndex = 0;
-        // CORRECCIÓN 1: Cambiado de `< _queue.Count - 1` a `< _queue.Count` para revisar el último elemento.
         for (int index = 1; index < _queue.Count; index++)
         {
-            // CORRECCIÓN 2: Cambiado de `>=` a `>` para mantener el orden FIFO cuando hay prioridades iguales.
             if (_queue[index].Priority > _queue[highPriorityIndex].Priority)
             {
                 highPriorityIndex = index;
@@ -30,8 +28,6 @@ public class PriorityQueue
         }
 
         var value = _queue[highPriorityIndex].Value;
-        
-        // CORRECCIÓN 3: Se debe eliminar el elemento de la lista después de obtener su valor.
         _queue.RemoveAt(highPriorityIndex);
         
         return value;
